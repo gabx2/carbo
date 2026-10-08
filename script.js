@@ -16,7 +16,7 @@ function buscarAlimentos() {
   const busca = semAcento(campoDeBusca.value)
 
   for (const alimento of alimentos) {
-    if (semAcento(alimento.nome).includes(busca) || busca === "") {
+    if (!semAcento(alimento.nome).includes(busca) || busca === "") {
       continue
     }
 
@@ -33,8 +33,9 @@ function buscarAlimentos() {
   }
 }
 
-function adicionarAlimento(alimento) {
+function adicionarAlimento(alimento, quantidadeSalva = 100) {
   const item = document.createElement("li")
+  item.dataset.nome = alimento.nome
   item.dataset.carboidratos = alimento.carboidratosPor100g
   item.dataset.proteinas = alimento.proteinasPor100g || 0
 
@@ -51,7 +52,7 @@ function adicionarAlimento(alimento) {
   const gramas = document.createElement("input")
   gramas.type = "number"
   gramas.min = "0"
-  gramas.value = "100"
+  gramas.value = quantidadeSalva
   textoGramas.appendChild(gramas)
 
   const resultado = document.createElement("p")
@@ -106,6 +107,34 @@ function calcularTotais() {
     " g de carboidratos e " +
     proteinas.toFixed(1) +
     " g de proteinas"
+
+  const refeicao = []
+
+  for (const item of selecionados.children) {
+    refeicao.push({
+      nome: item.dataset.nome,
+      gramas: item.querySelector("input").value,
+    })
+  }
+
+  localStorage.setItem(
+    "refeicao",
+    JSON.stringify({ data: new Date().toDateString(), alimentos: refeicao }),
+  )
 }
 
 campoDeBusca.oninput = buscarAlimentos
+
+const refeicaoSalva = JSON.parse(localStorage.getItem("refeicao"))
+
+if (refeicaoSalva && refeicaoSalva.data === new Date().toDateString()) {
+  for (const itemSalvo of refeicaoSalva.alimentos) {
+    const alimento = alimentos.find((item) => item.nome === itemSalvo.nome)
+
+    if (alimento) {
+      adicionarAlimento(alimento, itemSalvo.gramas)
+    }
+  }
+} else {
+  localStorage.removeItem("refeicao")
+}
