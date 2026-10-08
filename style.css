@@ -1,4 +1,4 @@
-* {
+﻿* {
   box-sizing: border-box;
 }
 
@@ -13,6 +13,7 @@ body {
 }
 
 header {
+  width: min(100%, 1200px);
   text-align: center;
   padding: 10px;
 }
@@ -42,10 +43,15 @@ header img {
 
 .campo-busca {
   position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 #sugestoes {
   position: absolute;
+  z-index: 11;
   top: calc(100% + 4px);
   left: 0;
   right: 0;
@@ -61,6 +67,11 @@ header img {
   text-align: center;
   max-height: 240px;
   overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#sugestoes::-webkit-scrollbar {
+  display: none;
 }
 
 #sugestoes:empty {
@@ -111,7 +122,12 @@ p {
 }
 
 #selecionados {
-  max-width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: none;
   margin: 12px auto 0;
   padding: 0;
   list-style: none;
@@ -120,7 +136,10 @@ p {
 }
 
 #selecionados li {
+  position: relative;
   display: flex;
+  flex: 0 0 calc((100% - 40px) / 5);
+  min-width: 0;
   justify-content: space-between;
   align-items: center;
   margin: 0;
@@ -133,11 +152,87 @@ p {
 }
 
 #selecionados button {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  opacity: 0;
   background: none;
   margin: 0;
   border: none;
   color: #171717;
-  font-size: 18px;
   line-height: 1;
   cursor: pointer;
+}
+
+#selecionados button svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+#selecionados li:hover button,
+#selecionados button:focus-visible {
+  opacity: 1;
+}
+
+.detalhes-alimento {
+  flex: 1;
+  padding-right: 14px;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  #selecionados li {
+    flex-basis: calc((100% - 20px) / 3);
+  }
+}
+
+@media (max-width: 600px) {
+  #selecionados li {
+    flex-basis: calc((100% - 10px) / 2);
+  }
+}
+
+.detalhes-alimento strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.campo-gramas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.campo-gramas input {
+  width: 80px;
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.resultado-alimento {
+  margin: 0;
+  color: #171717;
+  font-size: 13px;
+}
+
+#totais {
+  width: 300px;
+  max-width: 90vw;
+  margin: 12px auto 0;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fbf6e5;
+  color: #171717;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  text-align: center;
 }
