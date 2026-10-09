@@ -6,16 +6,23 @@ body {
   background-color: #171717;
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  justify-content: center; /* centraliza na horizontal */
-  align-items: center; /* centraliza na vertical */
   background: url(./img/back.png) no-repeat center center/cover;
 }
 
 header {
+  position: relative;
   width: min(100%, 1200px);
+  margin: 0 auto;
   text-align: center;
-  padding: 10px;
+  padding: calc(27vh + 133px) 10px 24px;
+}
+
+header > a {
+  position: absolute;
+  top: 27vh;
+  left: 50%;
+  display: block;
+  transform: translateX(-50%);
 }
 
 header img {
@@ -24,7 +31,7 @@ header img {
   width: 300px;
   max-width: 100%;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 #busca {
@@ -42,11 +49,13 @@ header img {
 }
 
 .campo-busca {
-  position: relative;
+  position: absolute;
+  top: calc(27vh + 90px);
+  left: 50%;
   z-index: 10;
   width: 100%;
   max-width: 300px;
-  margin: 0 auto;
+  transform: translateX(-50%);
 }
 
 #sugestoes {
@@ -235,4 +244,73 @@ p {
   font-family: "Lato", sans-serif;
   font-size: 14px;
   text-align: center;
+}
+
+#refeicoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px auto 0;
+}
+
+#refeicoes[hidden] {
+  display: none;
+}
+
+#refeicoes button {
+  position: relative;
+  display: flex;
+  width: 88px;
+  height: 88px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px;
+  border: 1px solid #171717;
+  border-radius: 8px;
+  background: #fbf6e5;
+  color: #171717;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#refeicoes button svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+#refeicoes button:hover,
+#refeicoes button:focus-visible {
+  background: #f3ecd4;
+}
+
+#refeicoes button[aria-pressed="true"] {
+  background: #f3ecd4;
+  border: 2px solid #9b8958;
+}
+
+#refeicoes button[aria-pressed="true"]:hover,
+#refeicoes button[aria-pressed="true"]:focus-visible {
+  background: #eee6c8;
+}
+
+#refeicoes button[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 9px;
+  width: 5px;
+  height: 9px;
+  border: solid #75643b;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
 }
