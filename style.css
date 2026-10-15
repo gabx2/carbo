@@ -254,10 +254,6 @@ p {
   margin: 12px auto 0;
 }
 
-#refeicoes[hidden] {
-  display: none;
-}
-
 #refeicoes button {
   position: relative;
   display: flex;

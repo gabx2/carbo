@@ -2,7 +2,6 @@ const campoDeBusca = document.querySelector("#busca")
 const sugestoes = document.querySelector("#sugestoes")
 const selecionados = document.querySelector("#selecionados")
 const totais = document.querySelector("#totais")
-const refeicoes = document.querySelector("#refeicoes")
 const botoesRefeicao = document.querySelectorAll("#refeicoes button")
 
 for (const botao of botoesRefeicao) {
@@ -108,7 +107,6 @@ function adicionarAlimento(alimento, quantidadeSalva = 100) {
 function calcularTotais() {
   const temAlimentos = selecionados.children.length > 0
   totais.hidden = !temAlimentos
-  refeicoes.hidden = !temAlimentos
 
   let carboidratos = 0
   let proteinas = 0
