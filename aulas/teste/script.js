@@ -25,11 +25,25 @@ function salvarPlano() {
 
 function desenharTela() {
   listaNaTela.innerHTML = ""
-  for (const alimento of listaAtual()) {
+
+  for (const [indice, alimento] of listaAtual().entries()) {
     const item = document.createElement("li")
+    const botao = document.createElement("button")
+
+    botao.textContent = "Remover"
+
+    botao.addEventListener("click", function () {
+      listaAtual().splice(indice, 1)
+      salvarPlano()
+      desenharTela()
+    })
+
     item.textContent = alimento.nome
+    item.append(botao)
+
     listaNaTela.append(item)
   }
+
   for (const botao of botoesRefeicoes) {
     const nome = botao.dataset.refeicao
     const contador = botao.querySelector(".contador")
