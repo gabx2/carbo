@@ -11,6 +11,9 @@ body {
 
 header {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: min(100%, 1200px);
   margin: 0 auto;
   text-align: center;
@@ -131,13 +134,14 @@ p {
 }
 
 #selecionados {
+  order: 3;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   width: 100%;
   max-width: none;
-  margin: 12px auto 0;
+  margin: 18px auto 0;
   padding: 0;
   list-style: none;
   font-family: "Lato", sans-serif;
@@ -152,7 +156,7 @@ p {
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   padding: 8px 16px;
   background-color: #fbf6e5;
   color: #171717;
@@ -234,10 +238,11 @@ p {
 }
 
 #totais {
+  order: 4;
   width: 300px;
   max-width: 90vw;
-  margin: 12px auto 0;
-  padding: 10px;
+  margin: 22px auto 0;
+  padding: 12px 16px;
   border-radius: 8px;
   background: #fbf6e5;
   color: #171717;
@@ -247,22 +252,45 @@ p {
 }
 
 #refeicoes {
+  order: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px auto 0;
+}
+
+#dias {
+  order: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin: 12px auto 0;
+  width: min(100%, 650px);
+  margin: 14px auto 0;
+}
+
+#dias button {
+  min-width: 76px;
+  padding: 10px 8px;
+  border: 1px solid #171717;
+  border-radius: 8px;
+  background: #fbf6e5;
+  color: #171717;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  cursor: default;
 }
 
 #refeicoes button {
   position: relative;
   display: flex;
-  width: 88px;
-  height: 88px;
+  width: 92px;
+  height: 92px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 8px;
   padding: 8px;
   border: 1px solid #171717;
   border-radius: 8px;

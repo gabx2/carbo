@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Treino de refeições</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Treino de refeições</h1>
+    <nav id="dias">
+      <button data-dia="segunda" aria-pressed="true">Segunda-feira</button>
+      <button data-dia="terca" aria-pressed="false">Terça</button>
+    </nav>
+    <p id="dia-atual"></p>
+    <nav id="refeicoes">
+      <button data-refeicao="cafe" aria-pressed="true">
+        Café <small class="contador">0</small>
+      </button>
+      <button data-refeicao="almoco" aria-pressed="false">
+        Almoço <small class="contador">0</small>
+      </button>
+    </nav>
+    <p id="refeicao-atual"></p>
+    <input id="nome-alimento" placeholder="Ex.: banana" />
+    <button id="adicionar">Adicionar</button>
+    <p>Itens no dia: <span id="total-dia">0</span></p>
+    <ul id="lista"></ul>
+  </body>
+</html>
